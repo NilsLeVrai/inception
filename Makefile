@@ -1,29 +1,33 @@
+COMPOSE = docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml
+
 all:
 	@mkdir -p /home/niabraha/data/wordpress
 	@mkdir -p /home/niabraha/data/mariadb
-	docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml build
+	$(COMPOSE) build
+
+up:
+	@mkdir -p /home/niabraha/data/wordpress
+	@mkdir -p /home/niabraha/data/mariadb
+	$(COMPOSE) up -d
 
 down:
-	docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml down
+	$(COMPOSE) down
 
 build:
-	docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml build
+	@mkdir -p /home/niabraha/data/wordpress
+	@mkdir -p /home/niabraha/data/mariadb
+	$(COMPOSE) build
 
 restart:
 	make down
 	make up
 
 logs:
-	docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml logs -f
+	$(COMPOSE) logs -f
 
-up:
-	docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml up -d
-
-fclean: 
-	@docker-compose -f srcs/docker-compose.yml kill
-	@docker-compose -f srcs/docker-compose.yml rm -f
+fclean:
+	@$(COMPOSE) kill
+	@$(COMPOSE) rm -f
 	@docker system prune -a --volumes -f
 
 .PHONY: all up down build restart logs fclean
-
-
