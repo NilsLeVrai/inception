@@ -16,6 +16,9 @@ restart:
 logs:
 	docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml logs -f
 
+up:
+	docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml up -d
+
 fclean: 
 	@docker-compose -f srcs/docker-compose.yml kill
 	@docker-compose -f srcs/docker-compose.yml rm -f

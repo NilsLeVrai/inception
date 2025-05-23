@@ -45,6 +45,12 @@ services:
     expose:
       - "9000"
 
+  shell:
+    image: debian:bullseye
+    container_name: shell
+    networks:
+      - inception
+    entrypoint: ["/bin/bash"]
 volumes:
   wordpress_data:
     driver: local
