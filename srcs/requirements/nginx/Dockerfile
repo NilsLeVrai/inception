@@ -9,7 +9,8 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 	-out /etc/ssl/certs/nginx.crt \
 	-subj "/C=FR/ST=Paris/L=Paris/O=42/OU=Inception/CN=localhost"
 
-COPY nginx.conf /etc/nginx/sites-available/default
+RUN rm -f /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 4443
 
