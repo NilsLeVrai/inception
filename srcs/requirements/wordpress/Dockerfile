@@ -1,13 +1,12 @@
 FROM debian:bullseye
 
 RUN apt update && \
-    apt install -y php-fpm php-mysql && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+    apt install -y php-fpm php-mysql 
 
 RUN sed -i 's/^;daemonize = yes/daemonize = no/' /etc/php/7.4/fpm/php-fpm.conf
 
-COPY ./script.sh /
+RUN mkdir -p /run/php
 
-EXPOSE 9000
+COPY ./script_wp.sh /
 
-CMD ["/script.sh"]
+CMD ["/script_wp.sh"]

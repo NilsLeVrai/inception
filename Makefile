@@ -4,6 +4,7 @@ all:
 	@mkdir -p /home/niabraha/data/wordpress
 	@mkdir -p /home/niabraha/data/mariadb
 	$(COMPOSE) build
+	$(COMPOSE) up -d
 
 up:
 	@mkdir -p /home/niabraha/data/wordpress

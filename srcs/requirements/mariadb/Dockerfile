@@ -5,7 +5,7 @@ RUN apt update && \
 
 # Copy custom MariaDB config if needed
 COPY ./mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY ./script.sh /
+COPY ./script_mariadb.sh /
 
 # Create the mysqld runtime dir and fix permissions
 RUN mkdir -p /run/mysqld && chown mysql:mysql /run/mysqld
@@ -13,4 +13,4 @@ RUN mkdir -p /run/mysqld && chown mysql:mysql /run/mysqld
 EXPOSE 3306
 
 # Initialize database if it doesn't exist
-ENTRYPOINT ["/script.sh"]
+ENTRYPOINT ["/script_mariadb.sh"]
