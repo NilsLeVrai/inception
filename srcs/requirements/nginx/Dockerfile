@@ -7,12 +7,20 @@ RUN apt-get update && \
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 	-keyout /etc/ssl/private/nginx.key \
 	-out /etc/ssl/certs/nginx.crt \
-	-subj "/C=FR/ST=Paris/L=Paris/O=42/OU=Inception/CN=localhost"
+	-subj "/C=FR/ST=Paris/L=Paris/O=42/OU=Inception/CN=niabraha.42.fr"
+
+RUN mkdir -p etc/nginx/ssl && \
+	mkdir -p /var/run/nginx && \
+	mkdir -p /var/www/html
 
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY hosts /etc/hosts
 
-RUN chmod 755 /var/www/html
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html && \
+	chown -R www-data:www-data /var/run/nginx
+
+RUN chmod -R 755 /var/www/html && \
+	chmod 755 /var/run/nginx
 
 EXPOSE 4443
 

@@ -27,8 +27,11 @@ logs:
 	$(COMPOSE) logs -f
 
 fclean:
-	@$(COMPOSE) kill
-	@$(COMPOSE) rm -f
+	@docker compose kill || true
+	@docker compose rm -f || true
+	@docker rm -f $$(docker ps -aq) 2>/dev/null || true
+	@docker volume rm $$(docker volume ls -q) 2>/dev/null || true
 	@docker system prune -a --volumes -f
+
 
 .PHONY: all up down build restart logs fclean
