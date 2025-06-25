@@ -4,7 +4,7 @@ RUN apt update && \
     apt install -y mariadb-server
 
 # Copy custom MariaDB config if needed
-COPY ./mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./mariadb.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./script_mariadb.sh /
 
 # Create the mysqld runtime dir and fix permissions
