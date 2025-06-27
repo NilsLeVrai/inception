@@ -1,4 +1,4 @@
-COMPOSE = docker-compose -f /home/niabraha/Documents/cursus/inception/srcs/docker-compose.yml
+COMPOSE = ./srcs/docker-compose -f docker-compose.yml
 
 all:
 	@mkdir -p /home/niabraha/data/wordpress
