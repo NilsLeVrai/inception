@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     volumes:
-      - mariadb:/var/www/html
+      - mariadb:/var/lib/mysql
     networks:
       - inception
     restart: on-failure
@@ -42,7 +42,7 @@ services:
     networks:
       - inception
     ports:
-      - "4443:443"
+      - "443:443"
     restart: on-failure
 
 volumes:

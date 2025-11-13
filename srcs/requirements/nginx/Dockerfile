@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 RUN apt-get update && \
     apt-get install -y nginx openssl && \
@@ -21,7 +21,5 @@ RUN chown -R www-data:www-data /var/www/html && \
 
 RUN chmod -R 755 /var/www/html && \
 	chmod 755 /var/run/nginx
-
-EXPOSE 4443
 
 CMD ["nginx", "-g", "daemon off;"]

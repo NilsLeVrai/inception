@@ -20,4 +20,4 @@ if ! wp core is-installed --allow-root; then
 fi
 cd;
 
-php-fpm7.4 -F --nodaemonize --fpm-config /etc/php/7.4/fpm/php-fpm.conf
+php-fpm8.2 -F --nodaemonize --fpm-config /etc/php/8.2/fpm/php-fpm.conf
